@@ -13,8 +13,8 @@ After=network-online.target
 
 [Service]
 ExecStart=/usr/local/hangoutsbot/hangupsbot/hangupsbot.py
-User=hangupsbot
-Group=hangupsbot
+User=root
+Group=root
 
 Restart=on-failure
 SyslogIdentifier=hangupsbot
