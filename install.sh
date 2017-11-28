@@ -61,8 +61,16 @@ function ins {
 
 function make {
     detectOS
-    ins python3 python3-pip
+    # ins python3 python3-pip debian
+    ins python python-pip # arch
     pip3 install -r requirements.txt
+    ln $PWD /usr/local/.
+    mkdir -p ~/.local/share/hangupsbot/.
+    cp config.json ~/.local/share/hangupsbot/.
+    cp examples/hangupsbot.service /etc/systemd/system/
+    systemctl enable hangupsbot.service
+    # need to start one time
+    py hangupsbot/hangupsbot.py
 }
 make $1
 exit 0
