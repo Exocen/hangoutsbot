@@ -70,7 +70,7 @@ function make {
     cp examples/hangupsbot.service /etc/systemd/system/
     systemctl enable hangupsbot.service
     # need to start one time
-    py hangupsbot/hangupsbot.py
+    python3 hangupsbot/hangupsbot.py
 }
 make $1
 exit 0
