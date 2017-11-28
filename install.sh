@@ -64,7 +64,7 @@ function make {
     # ins python3 python3-pip debian
     ins python python-pip # arch
     pip3 install -r requirements.txt
-    ln $PWD /usr/local/.
+    ln -s $PWD /usr/local/.
     mkdir -p ~/.local/share/hangupsbot/.
     cp config.json ~/.local/share/hangupsbot/.
     cp examples/hangupsbot.service /etc/systemd/system/
