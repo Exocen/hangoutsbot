@@ -66,7 +66,7 @@ function make {
     pip3 install -r requirements.txt
     ln -s $PWD /usr/local/.
     mkdir -p ~/.local/share/hangupsbot/.
-    cp config.json ~/.local/share/hangupsbot/.
+    ln -s $PWD/config.json ~/.local/share/hangupsbot/.
     cp examples/hangupsbot.service /etc/systemd/system/
     systemctl enable hangupsbot.service
     # need to start one time
