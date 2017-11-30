@@ -6,14 +6,6 @@
   "autoreplies": [
     [
       [
-        "regex:googleusercontent.com/([a-zA-Z0-9-_]+)"
-      ],
-      [
-        "the heck ?"
-      ]
-    ],
-    [
-      [
         "regex:wesh*"
       ],
       [
@@ -31,7 +23,7 @@
     ],
     [
       [
-        "beer"
+        "regex:beer([a-zA-Z0-9-_]+)"
       ],
       [
         "https://media.giphy.com/media/e6TR9n00dL3JS/giphy.gif"
@@ -39,7 +31,7 @@
     ],
     [
       [
-        "kebab"
+        "regex:kebab([a-zA-Z0-9-_]+)"
       ],
       [
         "https://media.giphy.com/media/mdMuPCgFy5NyE/giphy.gif"
@@ -47,7 +39,7 @@
     ],
     [
       [
-        "gay"
+        "regex:gay([a-zA-Z0-9-_]+)"
       ],
       [
         "https://media.giphy.com/media/egjCAYphmLmrm/giphy.gif"
@@ -64,11 +56,11 @@
     ],
     [
       [
-        "dodo",
-        "reposer",
-        "dormir",
-        "sleep",
-        "coucher"
+        "regex:dodo([a-zA-Z0-9-_]+)",
+        "regex:repos([a-zA-Z0-9-_]+)",
+        "regex:dormi([a-zA-Z0-9-_]+)",
+        "regex:sleep([a-zA-Z0-9-_]+)",
+        "regex:couch([a-zA-Z0-9-_]+)"
       ],
       [
         "https://media.giphy.com/media/ueUKby1TWZPpe/giphy.gif"
