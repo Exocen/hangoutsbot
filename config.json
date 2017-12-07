@@ -23,7 +23,7 @@
         ],
         [
             [
-                "regex:beer([a-zA-Z0-9-_]+)"
+                "regex:beer*"
             ],
             [
                 "https://media.giphy.com/media/e6TR9n00dL3JS/giphy.gif"
@@ -31,7 +31,7 @@
         ],
         [
             [
-                "regex:kebab([a-zA-Z0-9-_]+)"
+                "regex:kebab*"
             ],
             [
                 "https://media.giphy.com/media/mdMuPCgFy5NyE/giphy.gif"
@@ -39,7 +39,7 @@
         ],
         [
             [
-                "regex:gay([a-zA-Z0-9-_]+)"
+                "regex:gay*"
             ],
             [
                 "https://media.giphy.com/media/egjCAYphmLmrm/giphy.gif"
@@ -47,8 +47,8 @@
         ],
         [
             [
-                "regex:lundi([a-zA-Z0-9-_]+)",
-                "regex:monday([a-zA-Z0-9-_]+)"
+                "regex:lundi*",
+                "regex:monday*"
             ],
             [
                 "https://media.giphy.com/media/ECRWpamBUH3J6/giphy.gif"
@@ -56,7 +56,7 @@
         ],
         [
             [
-                "regex:swag([a-zA-Z0-9-_]+)"
+                "regex:swag*"
             ],
             [
                 "https://media.giphy.com/media/23UvgsnAh8LxS/giphy.gif"
@@ -64,7 +64,7 @@
         ],
         [
             [
-                "regex:police([a-zA-Z0-9-_]+)"
+                "regex:police*"
             ],
             [
                 "https://media.giphy.com/media/zILP8eAxVkFTW/giphy.gif"
@@ -72,8 +72,8 @@
         ],
         [
             [
-                "regex:argent([a-zA-Z0-9-_]+)",
-                "regex:money([a-zA-Z0-9-_]+)"
+                "regex:argent*",
+                "regex:money*"
             ],
             [
                 "https://media.giphy.com/media/sDcfxFDozb3bO/giphy.gif"
@@ -81,10 +81,10 @@
         ],
         [
             [
-                "regex:genial([a-zA-Z0-9-_]+)",
-                "regex:neat([a-zA-Z0-9-_]+)",
-                "regex:super([a-zA-Z0-9-_]+)",
-                "regex:awesome([a-zA-Z0-9-_]+)"
+                "regex:genial*",
+                "regex:neat*",
+                "regex:super*",
+                "regex:awesome*"
             ],
             [
                 "https://media.giphy.com/media/MCKQEmHkUyGf6/giphy.gif"
@@ -92,8 +92,8 @@
         ],
         [
             [
-                "regex:sad([a-zA-Z0-9-_]+)",
-                "regex:triste([a-zA-Z0-9-_]+)"
+                "regex:sad*",
+                "regex:triste*"
 
             ],
             [
@@ -102,7 +102,7 @@
         ],
         [
             [
-                "regex:norag([a-zA-Z0-9-_]+)"
+                "regex:norage*"
 
             ],
             [
@@ -111,8 +111,8 @@
         ],
         [
             [
-                "regex:cry([a-zA-Z0-9-_]+)",
-                "regex:pleur([a-zA-Z0-9-_]+)"
+                "regex:cry*",
+                "regex:pleure*"
             ],
             [
                 "http://www.reactiongifs.com/r/bc.gif"
@@ -120,11 +120,11 @@
         ],
         [
             [
-                "regex:dodo([a-zA-Z0-9-_]+)",
-                "regex:repos([a-zA-Z0-9-_]+)",
-                "regex:dormi([a-zA-Z0-9-_]+)",
-                "regex:sleep([a-zA-Z0-9-_]+)",
-                "regex:couch([a-zA-Z0-9-_]+)"
+                "regex:dodo*",
+                "regex:repose*",
+                "regex:dormi*",
+                "regex:sleep*",
+                "regex:couche*"
             ],
             [
                 "https://media.giphy.com/media/ueUKby1TWZPpe/giphy.gif"
