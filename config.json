@@ -1,96 +1,160 @@
 {
-  "admins": [
-    "106548649218205284322",
-    "108243343368387257846"
-  ],
-  "autoreplies": [
-    [
-      [
-        "regex:wesh*"
-      ],
-      [
-        "wesh pd !"
-      ]
+    "admins": [
+        "106548649218205284322",
+        "108243343368387257846"
     ],
-    [
-      [
-        "regex:dance",
-        "regex:danse"
-      ],
-      [
-        "https://media.tenor.com/images/ca0351d04a0d4861f32d006b7449184d/tenor.gif"
-      ]
+    "autoreplies": [
+        [
+            [
+                "regex:wesh*"
+            ],
+            [
+                "wesh pd !"
+            ]
+        ],
+        [
+            [
+                "regex:dance",
+                "regex:danse"
+            ],
+            [
+                "https://media.tenor.com/images/ca0351d04a0d4861f32d006b7449184d/tenor.gif"
+            ]
+        ],
+        [
+            [
+                "regex:beer([a-zA-Z0-9-_]+)"
+            ],
+            [
+                "https://media.giphy.com/media/e6TR9n00dL3JS/giphy.gif"
+            ]
+        ],
+        [
+            [
+                "regex:kebab([a-zA-Z0-9-_]+)"
+            ],
+            [
+                "https://media.giphy.com/media/mdMuPCgFy5NyE/giphy.gif"
+            ]
+        ],
+        [
+            [
+                "regex:gay([a-zA-Z0-9-_]+)"
+            ],
+            [
+                "https://media.giphy.com/media/egjCAYphmLmrm/giphy.gif"
+            ]
+        ],
+        [
+            [
+                "regex:lundi([a-zA-Z0-9-_]+)"
+                "regex:monday([a-zA-Z0-9-_]+)"
+            ],
+            [
+                "https://media.giphy.com/media/ECRWpamBUH3J6/giphy.gif"
+            ]
+        ],
+        [
+            [
+                "regex:swag([a-zA-Z0-9-_]+)"
+            ],
+            [
+                "https://media.giphy.com/media/23UvgsnAh8LxS/giphy.gif"
+            ]
+        ],
+        [
+            [
+                "regex:police([a-zA-Z0-9-_]+)"
+            ],
+            [
+                "https://media.giphy.com/media/zILP8eAxVkFTW/giphy.gif"
+            ]
+        ],
+        [
+            [
+                "regex:argent([a-zA-Z0-9-_]+)",
+                "regex:money([a-zA-Z0-9-_]+)"
+            ],
+            [
+                "https://media.giphy.com/media/sDcfxFDozb3bO/giphy.gif"
+            ]
+        ],
+        [
+            [
+                "regex:genial([a-zA-Z0-9-_]+)",
+                "regex:neat([a-zA-Z0-9-_]+)",
+                "regex:super([a-zA-Z0-9-_]+)",
+                "regex:awesome([a-zA-Z0-9-_]+)"
+            ],
+            [
+                "https://media.giphy.com/media/MCKQEmHkUyGf6/giphy.gif"
+            ]
+        ],
+        [
+            [
+                "regex:sad([a-zA-Z0-9-_]+)",
+                "regex:triste([a-zA-Z0-9-_]+)"
+
+            ],
+            [
+                "https://media.giphy.com/media/w3Er0gW94cG8E/giphy.gif"
+            ]
+        ],
+        [
+            [
+                "regex:norag([a-zA-Z0-9-_]+)"
+
+            ],
+            [
+                "http://media.giphy.com/media/jbxQLpOKN2URa/giphy.gif"
+            ]
+        ],
+        [
+            [
+                "regex:cry([a-zA-Z0-9-_]+)",
+                "regex:pleur([a-zA-Z0-9-_]+)"
+            ],
+            [
+                "http://www.reactiongifs.com/r/bc.gif"
+            ]
+        ],
+        [
+            [
+                "regex:dodo([a-zA-Z0-9-_]+)",
+                "regex:repos([a-zA-Z0-9-_]+)",
+                "regex:dormi([a-zA-Z0-9-_]+)",
+                "regex:sleep([a-zA-Z0-9-_]+)",
+                "regex:couch([a-zA-Z0-9-_]+)"
+            ],
+            [
+                "https://media.giphy.com/media/ueUKby1TWZPpe/giphy.gif"
+            ]
+        ]
     ],
-    [
-      [
-        "regex:beer([a-zA-Z0-9-_]+)"
-      ],
-      [
-        "https://media.giphy.com/media/e6TR9n00dL3JS/giphy.gif"
-      ]
+    "autoreplies_enabled": true,
+    "commands_enabled": true,
+    "commands_user": [],
+    "conversations": {
+        "CONV_ID": {
+            "autoreplies_enabled": false,
+            "commands_enabled": false,
+            "silentmode": true
+        }
+    },
+    "link_to_guide": "https://exocen.com",
+    "mentionall": true,
+    "mentionallwhitelist": [],
+    "mentionerrors": true,
+    "mentionquidproquo": false,
+    "plugins": [
+        "botaliases",
+        "default",
+        "mentions",
+        "subscribe",
+        "autoreply",
+        "dnd",
+        "starter",
+        "remind"
     ],
-    [
-      [
-        "regex:kebab([a-zA-Z0-9-_]+)"
-      ],
-      [
-        "https://media.giphy.com/media/mdMuPCgFy5NyE/giphy.gif"
-      ]
-    ],
-    [
-      [
-        "regex:gay([a-zA-Z0-9-_]+)"
-      ],
-      [
-        "https://media.giphy.com/media/egjCAYphmLmrm/giphy.gif"
-      ]
-    ],
-    [
-      [
-        "regex:cry([a-zA-Z0-9-_]+)",
-        "regex:pleur([a-zA-Z0-9-_]+)"
-      ],
-      [
-        "http://www.reactiongifs.com/r/bc.gif"
-      ]
-    ],
-    [
-      [
-        "regex:dodo([a-zA-Z0-9-_]+)",
-        "regex:repos([a-zA-Z0-9-_]+)",
-        "regex:dormi([a-zA-Z0-9-_]+)",
-        "regex:sleep([a-zA-Z0-9-_]+)",
-        "regex:couch([a-zA-Z0-9-_]+)"
-      ],
-      [
-        "https://media.giphy.com/media/ueUKby1TWZPpe/giphy.gif"
-      ]
-    ]
-  ],
-  "autoreplies_enabled": true,
-  "commands_enabled": true,
-  "commands_user": [],
-  "conversations": {
-    "CONV_ID": {
-      "autoreplies_enabled": false,
-      "commands_enabled": false,
-      "silentmode": true
-    }
-  },
-  "link_to_guide": "https://exocen.com",
-  "mentionall": true,
-  "mentionallwhitelist": [],
-  "mentionerrors": true,
-  "mentionquidproquo": false,
-  "plugins": [
-    "botaliases",
-    "default",
-    "mentions",
-    "subscribe",
-    "autoreply",
-    "dnd",
-    "starter",
-    "remind"
-  ],
-  "silentmode": false
+    "silentmode": false
 }
