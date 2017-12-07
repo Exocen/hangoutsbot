@@ -47,7 +47,7 @@
         ],
         [
             [
-                "regex:lundi([a-zA-Z0-9-_]+)"
+                "regex:lundi([a-zA-Z0-9-_]+)",
                 "regex:monday([a-zA-Z0-9-_]+)"
             ],
             [
