@@ -62,14 +62,13 @@ function ins {
 function make {
     if [ "$(id -u)" = "0" ]; then
         detectOS
-        # ins python3 python3-pip debian
         ins python python-pip # arch
-        sudo pip3 install -r requirements.txt
-        sudo ln -sfn $PWD /usr/local/.
-        sudo mkdir -p ~/.local/share/hangupsbot/.
-        sudo ln -sfn $PWD/config.json ~/.local/share/hangupsbot/.
-        sudo cp -f examples/hangupsbot.service /etc/systemd/system/
-        sudo systemctl enable hangupsbot.service
+        pip3 install -r requirements.txt
+        ln -sfn $PWD /usr/local/.
+        mkdir -p ~/.local/share/hangupsbot/.
+        ln -sfn $PWD/config.json ~/.local/share/hangupsbot/.
+        cp -f examples/hangupsbot.service /etc/systemd/system/
+        systemctl enable hangupsbot.service
         # need to start one time
         python3 hangupsbot/hangupsbot.py
     else
