@@ -60,17 +60,21 @@ function ins {
 
 
 function make {
-    detectOS
-    # ins python3 python3-pip debian
-    ins python python-pip # arch
-    sudo pip3 install -r requirements.txt
-    sudo ln -s $PWD /usr/local/.
-    sudo mkdir -p ~/.local/share/hangupsbot/.
-    sudo ln -s $PWD/config.json ~/.local/share/hangupsbot/.
-    sudo cp -f examples/hangupsbot.service /etc/systemd/system/
-    sudo systemctl enable hangupsbot.service
-    # need to start one time
-    python3 hangupsbot/hangupsbot.py
+    if [ "$(id -u)" = "0" ]; then
+        detectOS
+        # ins python3 python3-pip debian
+        ins python python-pip # arch
+        sudo pip3 install -r requirements.txt
+        sudo ln -sfn $PWD /usr/local/.
+        sudo mkdir -p ~/.local/share/hangupsbot/.
+        sudo ln -sfn $PWD/config.json ~/.local/share/hangupsbot/.
+        sudo cp -f examples/hangupsbot.service /etc/systemd/system/
+        sudo systemctl enable hangupsbot.service
+        # need to start one time
+        python3 hangupsbot/hangupsbot.py
+    else
+        makeItColorful 'This script must be run as root' $RED
+    fi
 }
 make $1
 exit 0
