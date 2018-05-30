@@ -62,7 +62,7 @@ function make {
 	detectOS
 	ins python python-pip # arch
 	pip3 install --user -r requirements.txt --upgrade
-	ln -sfn $PWD /usr/local/.
+	sudo ln -sfn $PWD /usr/local/.
 	mkdir -p ~/.local/share/hangupsbot/.
 	ln -sfn $PWD/config.json ~/.local/share/hangupsbot/.
 	sudo cp -f examples/hangupsbot.service /etc/systemd/system/
