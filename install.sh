@@ -50,8 +50,7 @@ function ins {
         sudo dnf install $@ -y #> /dev/null 2>&1
         is_working "Installation de $all"
     elif [ "$WOS" = "Arch" ] ;then
-        pikaur -Sau
-        pikaur -S $@ --noconfirm #> /dev/null 2>&1
+        aurman -Syu --noedit --noconfirm $@ #> /dev/null 2>&1
         is_working "Installation de $all"
     else
         makeItColorful "OS Inconnu" $RED
