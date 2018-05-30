@@ -65,9 +65,9 @@ function make {
 	ln -sfn $PWD /usr/local/.
 	mkdir -p ~/.local/share/hangupsbot/.
 	ln -sfn $PWD/config.json ~/.local/share/hangupsbot/.
-	cp -f examples/hangupsbot.service /etc/systemd/system/
-	systemctl enable hangupsbot.service
-	sudo pip install ndg_httpsclient
+	sudo cp -f examples/hangupsbot.service /etc/systemd/system/
+	sudo systemctl enable hangupsbot.service
+	pip3 install --user ndg_httpsclient --upgrade
 	# need to start one time
 	python3 hangupsbot/hangupsbot.py
 }
