@@ -98,19 +98,16 @@ def image_upload_single(image_uri):
 
         """image handling logic for specific image types - if necessary, guess by extension"""
 
-        if content_type.startswith('image/'):
-            if content_type == "image/webp":
-                image_handling = "image_convert_to_png"
-            else:
-                image_handling = "standard"
+        if content_type.startswith('image/'): # If it's identifying itself as an image then just upload it - Google's servers will cope.
+            image_handling = "standard"
 
         elif content_type == "application/octet-stream":
-            ext = filename.split(".")[-1].lower() # guess the type from the extension
+            ext = filename.split(".")[-1].lower() # Try to guess the type from the extension
 
-            if ext in ("jpg", "jpeg", "jpe", "jif", "jfif", "gif", "png"):
+            if ext in ("jpg", "jpeg", "jpe", "jif", "jfif", "gif", "png", "webp"): # If we know what the extension is, just upload it.
                 image_handling = "standard"
-            elif ext in ("webp"):
-                image_handling = "image_convert_to_png"
+            else:
+                image_handling = "image_convert_to_png" # Only send for processing if the content type doesn't show as image and doesn't match known good extensions.
 
         if image_handling:
             logger.debug("reading {}".format(image_uri))
@@ -142,8 +139,13 @@ def image_upload_raw(image_data, filename):
     image_id = False
     try:
         image_id = yield from _externals["bot"]._client.upload_image(image_data, filename=filename)
-    except KeyError as exc:
-        logger.warning("_client.upload_image failed: {}".format(exc))
+    except Exception:
+        image_data.seek(0)
+        try:
+            filename = "{}.gif".format(filename)
+            image_id = yield from _externals["bot"]._client.upload_image(image_data, filename=filename)
+        except Exception as exc:
+            logger.warning("_client.upload_image failed", exc_info=exc)
     return image_id
 
 

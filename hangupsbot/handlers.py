@@ -34,6 +34,7 @@ class EventHandler:
                             "membership": [],
                             "message": [],
                             "rename": [],
+                            "linkshare": [],
                             "history": [],
                             "sending":[],
                             "typing": [],
@@ -61,7 +62,7 @@ class EventHandler:
 
         # determine the actual handler function that will be registered
         _handler = function
-        if type in ["allmessages", "call", "membership", "message", "rename", "history", "typing", "watermark"]:
+        if type in ["allmessages", "call", "membership", "message", "rename", "linkshare", "history", "typing", "watermark"]:
             if not asyncio.iscoroutine(function):
                 _handler = asyncio.coroutine(_handler)
         elif type in ["sending"]:
@@ -329,8 +330,8 @@ class EventHandler:
 
         # Test if command length is sufficient
         if len(line_args) < 2:
-            config_silent = bot.get_config_suboption(event.conv.id_, 'silentmode')
-            tagged_silent = "silent" in bot.tags.useractive(event.user_id.chat_id, event.conv.id_)
+            config_silent = self.bot.get_config_suboption(event.conv.id_, 'silentmode')
+            tagged_silent = "silent" in self.bot.tags.useractive(event.user_id.chat_id, event.conv.id_)
             if not (config_silent or tagged_silent):
                 yield from self.bot.coro_send_message(event.conv, _('{}: Missing parameter(s)').format(
                     event.user.full_name))
@@ -366,6 +367,11 @@ class EventHandler:
     def handle_chat_rename(self, event):
         """handle conversation name change"""
         yield from self.run_pluggable_omnibus("rename", self.bot, event, command)
+
+    @asyncio.coroutine
+    def handle_chat_link_share(self, event):
+        """handle conversation link join status change"""
+        yield from self.run_pluggable_omnibus("linkshare", self.bot, event, command)
 
     @asyncio.coroutine
     def handle_chat_history(self, event):
@@ -453,6 +459,8 @@ class HandlerBridge:
             event_type = "membership"
         elif event is hangups.RenameEvent:
             event_type = "rename"
+        elif event is hangups.GroupLinkSharingModificationEvent:
+            event_type = "linkshare"
         elif event is hangups.OTREvent:
             event_type = "history"
         elif type(event) is str:

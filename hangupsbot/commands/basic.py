@@ -1,5 +1,6 @@
 import logging
 import importlib
+import subprocess
 import sys
 import re
 
@@ -8,6 +9,8 @@ import plugins
 from version import __version__
 from commands import command
 
+from utils import event_to_user_bridge
+
 
 logger = logging.getLogger(__name__)
 
@@ -15,6 +18,16 @@ try:
     import resource
 except ImportError:
     logger.warning("resource is unavailable on your system")
+
+
+def _git_status():
+    try:
+        commit = subprocess.check_output(["git", "show", "--date=short", "--format=format:%ad %h"]).decode().strip()
+        if subprocess.check_output(["git", "diff-index", "HEAD"]):
+            commit += "+"
+        return commit
+    except subprocess.CalledProcessError:
+        return None
 
 
 def _initialise(bot): pass # prevents commands from being automatically added
@@ -108,12 +121,10 @@ def help(bot, event, cmd=None, *args):
     help_lines = [ re.sub(r"(?<!\S)\/bot(?!\S)", bot._handlers.bot_command[0], _line)
                    for _line in help_lines ]
 
-    yield from bot.coro_send_to_user_and_conversation(
-        event.user.id_.chat_id,
-        event.conv_id,
-        "<br />".join(help_lines), # via private message
-        _("<i>{}, I've sent you some help ;)</i>") # public message
-            .format(event.user.full_name))
+    user_id, bridge_id = event_to_user_bridge(event)
+    yield from bot.send_to_bridged_1to1(user_id, bridge_id, "<br />".join(help_lines))
+    if bot.conversations.catalog[event.conv_id]["type"] != "ONE_TO_ONE":
+        yield from bot.coro_send_message(event.conv_id, _("<i>{}, I've sent you some help ;)</i>").format(event.user.full_name))
 
 
 @command.register(admin=True)
@@ -234,8 +245,11 @@ def version(bot, event, *args):
     """get the version of the bot and dependencies (admin-only)"""
 
     version_info = []
+    commit = _git_status()
 
     version_info.append(_("Bot Version: **{}**").format(__version__)) # hangoutsbot
+    if commit:
+        version_info.append(_("Git: **{}**").format(commit))
     version_info.append(_("Python Version: **{}**").format(sys.version.split()[0])) # python
 
     # display extra version information only if user is an admin

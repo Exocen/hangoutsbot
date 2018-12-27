@@ -56,6 +56,9 @@ class WebFramework:
 
         extra_metadata.update({ "bridge.uid": self.uid })
 
+        # Add to bot's tracking of bridges.
+        bot.bridges[self.uid] = self
+
         self._handler_broadcast = plugins.register_handler(self._broadcast, type="sending", extra_metadata=extra_metadata)
         self._handler_repeat = plugins.register_handler(self._repeat, type="allmessages", extra_metadata=extra_metadata)
 
@@ -64,6 +67,7 @@ class WebFramework:
     def close(self):
         plugins.deregister_handler(self._handler_broadcast, type="sending")
         plugins.deregister_handler(self._handler_repeat, type="allmessages")
+        del self.bot.bridges[self.uid]
 
     def load_configuration(self, configkey):
         self.configuration = self.bot.get_config_option(self.configkey) or []
@@ -233,7 +237,7 @@ class WebFramework:
                 attach = event.conv_event.attachments[0]
                 if attach == message:
                     # Message consists solely of the attachment URL, no need to send that.
-                    message = "shared an image"
+                    message = ""
                     is_action = True
                 elif attach in message:
                     # Message includes some text too, strip the attachment URL from the end if present.
@@ -257,6 +261,10 @@ class WebFramework:
             yield from self._send_to_external_chat(config, event)
 
     @asyncio.coroutine
+    def send_to_external_1to1(self, user_id, message):
+        logger.warning("send_to_external_1to1 should be overridden by derived class")
+
+    @asyncio.coroutine
     def _send_to_external_chat(self, config, event):
         pass
 
@@ -272,7 +280,7 @@ class WebFramework:
         if "source_title" in external_context:
             source_title = external_context["source_title"]
 
-        source_gid = self.plugin_name
+        source_gid = self.uid
         if "source_gid" in external_context:
             source_gid = external_context["source_gid"]
 
@@ -318,7 +326,8 @@ class WebFramework:
         source_user = external_context.get("source_user") or self.plugin_name
         bridge_user = self._get_user_details(source_user, external_context)
         source_title = external_context.get("source_title")
-        source_attrs = [source_title] if source_title else []
+        hide_preference = self.bot.config.get_option("chatbridge_hide_source")
+        source_attrs = [source_title] if source_title and not hide_preference else []
         if external_context.get("source_edited"):
             source_attrs.append("edited")
 
@@ -357,7 +366,10 @@ class WebFramework:
             if photo_url and not photo_url.startswith("http"):
                 photo_url = "https:" + photo_url
 
-        if nickname:
+        name_preference = self.bot.config.get_option("chatbridge_preferred_name")
+        if name_preference == "both" and nickname and not full_name == nickname:
+            preferred_name = "{} ({})".format(full_name, nickname)
+        elif name_preference == "nick" and nickname:
             preferred_name = nickname
         else:
             preferred_name = full_name
